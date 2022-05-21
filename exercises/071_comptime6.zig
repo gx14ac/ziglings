@@ -40,7 +40,10 @@ pub fn main() void {
 
     const fields = @typeInfo(Narcissus).Struct.fields;
 
-    ??? {
+    // インライン for はコンパイル時に実行され、
+    // 上記のような通常の実行時の for ループが許されないような状況で、
+    // 一連の項目をプログラム的にループさせることができるようになる
+    inline for(fields) |field| {
         if (field.field_type != void) {
             print(" {s}", .{field.name});
         }

@@ -35,8 +35,11 @@ pub fn main() void {
     // In this contrived example, we've decided to allocate some
     // arrays using a variable count! But something's missing...
     //
-    var count = 0;
 
+    // comptimeは、変数宣言の前に置くと、その変数のすべての利用がコンパイル時に行われることを保証する
+    comptime var count: u8 = 0;
+
+    // コンパイル時に動的に型のサイズを決めるためには参照されるcount変数に明治的にcomptimeを宣言しないといけない
     count += 1;
     var a1: [count]u8 = .{'A'} ** count;
 
