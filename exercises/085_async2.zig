@@ -19,6 +19,8 @@ const print = @import("std").debug.print;
 
 pub fn main() void {
     var foo_frame = async foo();
+    // resumeでsuspend以降の処理を実行する
+    resume foo_frame;
 }
 
 fn foo() void {

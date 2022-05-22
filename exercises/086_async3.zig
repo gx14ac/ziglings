@@ -13,7 +13,7 @@ pub fn main() void {
     const n = 5;
     var foo_frame = async foo(n);
 
-    ???
+    resume foo_frame;
 
     print("\n", .{});
 }
@@ -24,6 +24,6 @@ fn foo(countdown: u32) void {
     while (current > 0) {
         print("{} ", .{current});
         current -= 1;
-        suspend {}
     }
+    suspend {}
 }
